@@ -1,0 +1,62 @@
+# Test Profile Configuration for application.yml
+
+spring:
+  config:
+    activate:
+      on-profile: test
+
+  application:
+    name: Navashu Auth Service - Test
+    version: 35.4.0
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/navashu_test_db
+    username: postgres
+    password: Navneit#21
+    driver-class-name: org.postgresql.Driver
+    # Uncomment for H2 in-memory database
+    # url: jdbc:h2:mem:testdb
+    # driver-class-name: org.h2.Driver
+    # username: sa
+    # password: 
+
+  jpa:
+    database: POSTGRESQL
+    database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        enable_lazy_load_no_trans: true
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: test@example.com
+    password: testpassword
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+logging:
+  level:
+    root: WARN
+    com.navashu: DEBUG
+    org.springframework.test: INFO
+    org.springframework.web: INFO
+    org.hibernate: WARN
+    org.springframework.security: INFO
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+
